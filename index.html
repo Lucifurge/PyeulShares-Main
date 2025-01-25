@@ -84,92 +84,56 @@
             }
         }
 
-        .hero p {
-            font-size: 1.5rem;
-            margin-top: 20px;
-        }
-
-        .btn,
-        .upload-btn {
-            background: #ff79c6;
-            color: white;
-            font-size: 1rem;
-            padding: 10px 20px;
-            border-radius: 25px;
-            box-shadow: 0 4px 10px rgba(255, 121, 198, 0.5);
-            transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-        }
-
-        .btn:hover,
-        .btn:focus,
-        .upload-btn:hover,
-        .upload-btn:focus {
-            background: #ff6fae;
-            box-shadow: 0 6px 15px rgba(255, 111, 174, 0.7);
-            transform: scale(1.05);
-        }
-
-        .footer {
-            background: linear-gradient(90deg, #5a1c3b, #8b1c61);
+        #authModal .modal-content {
+            background-color: #2f1d30;
             color: #f8d2e2;
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #5a3a5a;
-        }
-
-        .footer a {
-            color: #ff79c6;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: #ff6fae;
-        }
-
-        #shareForm {
-            background: #2f1d30;
-            padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-            transition: transform 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
         }
 
-        #shareForm:hover {
-            transform: translateY(-5px);
-        }
-
-        .form-control {
+        #authModal .form-control {
             background: #3a273a;
             color: #f8d2e2;
             border: 1px solid #5a3a5a;
-            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
-        .form-control:focus {
-            background: #2f1d30;
-            border-color: #ff79c6;
-            color: #f8d2e2;
-            box-shadow: none;
-        }
-
-        .progress {
-            height: 25px;
-            border-radius: 15px;
-            overflow: hidden;
-            background: #3a273a;
-            border: 1px solid #5a3a5a;
-            margin-top: 20px;
-        }
-
-        .progress-bar {
+        #authModal .btn-primary {
             background: #ff79c6;
-            transition: width 0.5s ease;
+            border-color: #ff79c6;
+        }
+
+        #authModal .btn-primary:hover {
+            background: #ff6fae;
+            border-color: #ff6fae;
         }
     </style>
 </head>
 
 <body>
+    <!-- Authentication Modal -->
+    <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="authModalLabel">Authentication Required</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="authForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Unlock</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
@@ -181,11 +145,6 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
                     <li class="nav-item"><a class="nav-link" href="#share">Share Post</a></li>
-                    <li class="nav-item">
-                        <label class="upload-btn">Change Background
-                            <input type="file" id="bgUploader" class="file-input" accept="image/*" style="display: none;">
-                        </label>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -227,31 +186,6 @@
         <p>&copy; 2025 Pyeulshares. All Rights Reserved. Made By The Husband of Pyeul Lihm</p>
     </footer>
 
-    <script>
-        const bgUploader = document.getElementById("bgUploader");
-
-        bgUploader.addEventListener("change", (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-
-                reader.onload = (e) => {
-                    document.body.style.backgroundImage = `url('${e.target.result}')`;
-                    document.body.style.backgroundSize = "cover";
-                    document.body.style.backgroundRepeat = "no-repeat";
-                    document.body.style.backgroundAttachment = "fixed";
-                };
-
-                reader.onerror = () => {
-                    alert("Failed to load the image. Please try again with a valid image.");
-                };
-
-                reader.readAsDataURL(file);
-            } else {
-                alert("No file selected. Please select an image.");
-            }
-        });
-    </script>
     <script src="index.js"></script>
 </body>
 

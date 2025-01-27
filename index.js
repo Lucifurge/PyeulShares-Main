@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
             { username: "addarkin", password: "arkin.mel" },
             { username: "realwifenimingyu", password: "arousseau_18" },
             { username: "lucifurge", password: "09100909" },
+            { username: "kupikupin", password: ":mwamwachopchop_lezi" },
             // 36 blank entries for additional usernames and passwords
             ...Array(36).fill({ username: "", password: "" })
         ];

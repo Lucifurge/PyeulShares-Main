@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body {
             background-color: #2e1d2f;
@@ -228,6 +229,11 @@
     </footer>
 
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Invoke the lock screen on page load
+            lockScreen();
+        });
+
         const bgUploader = document.getElementById("bgUploader");
 
         bgUploader.addEventListener("change", (event) => {
@@ -236,7 +242,7 @@
                 const reader = new FileReader();
 
                 reader.onload = (e) => {
-                    document.body.style.backgroundImage = url('${e.target.result}');
+                    document.body.style.backgroundImage = `url('${e.target.result}')`;
                     document.body.style.backgroundSize = "cover";
                     document.body.style.backgroundRepeat = "no-repeat";
                     document.body.style.backgroundAttachment = "fixed";

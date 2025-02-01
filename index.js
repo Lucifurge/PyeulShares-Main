@@ -3,11 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const lockScreen = () => {
         const credentials = [
             { username: "mariz", password: "mariz2006" },
-            { username: "realwifenimingyu", password: "arousseau_18" },
             { username: "lucifurge", password: "09100909" },
-            { username: "kupikupin", password: "mwamwachopchop_lezi" },
-            { username: "@krizjorjas", password: "krizzy123" },
-            { username: "@gyo.cute", password: "hrldsynth" },
         // 36 blank entries for additional usernames and passwords
             ...Array(35).fill({ username: "", password: "" })
         ];
